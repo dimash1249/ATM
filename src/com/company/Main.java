@@ -1,7 +1,5 @@
 package com.company;
 
-import com.sun.net.httpserver.Authenticator;
-
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileReader;
@@ -11,10 +9,10 @@ import java.util.Scanner;
 
 public class Main {
     public static ArrayList<ATM> dataATM(){
-        ArrayList<ATM> atm = new ArrayList<ATM>();
+        ArrayList<ATM> atm = new ArrayList<>();
         try{
             BufferedReader reader = new BufferedReader(new FileReader("dataATM.txt"));
-            String s = "";
+            String s;
             while( (s = reader.readLine())!=null ){
                 String[] tokens = s.split(" ");
                 ATM atm1 = new ATM();
@@ -35,11 +33,11 @@ public class Main {
     public static void saveDataATM(ArrayList<ATM> atms){
         try{
             BufferedWriter writer = new BufferedWriter(new FileWriter("dataATM.txt"));
-            String s = "";
-            for(int i=0;i<atms.size();i++){
-                s += atms.get(i).toString() + "\r\n";
+            StringBuilder s = new StringBuilder();
+            for (ATM atm : atms) {
+                s.append(atm.toString()).append("\r\n");
             }
-            writer.write(s);
+            writer.write(s.toString());
             writer.close();
         }catch (Exception e){
             e.printStackTrace();
@@ -58,7 +56,7 @@ public class Main {
             e.printStackTrace();
         }
 
-        ArrayList<ATM> atms = new ArrayList<ATM>();
+        ArrayList<ATM> atms;
         Scanner input = new Scanner(System.in);
         int ATMBalance = 30000;
         atms = dataATM();
@@ -99,9 +97,10 @@ public class Main {
                             saveDataATM(atms);
                             System.out.println("Print the receipt?\nPRESS [0] - no    PRESS[1] - yes");
                             int receipt = input.nextInt();
-                            if(receipt == 0){
-                            }
-                            else if(receipt == 1){
+                            //if(receipt == 0){
+                            //}
+                            //else
+                            if(receipt == 1){
                                 atms.get(index).receiptDataAdd(amountAdd);
                             }
                         }
@@ -118,9 +117,10 @@ public class Main {
                                     atms.get(index).setBalance(atms.get(index).getBalance() - amountTake);
                                     System.out.println("Print the receipt?\nPRESS [0] - no    PRESS[1] - yes");
                                     int receipt = input.nextInt();
-                                    if(receipt == 0){
-                                    }
-                                    else if(receipt == 1){
+                                    //if(receipt == 0){
+                                    //}
+                                    //else
+                                    if(receipt == 1){
                                         atms.get(index).receiptDataTake(amountTake);
                                     }
                                     System.out.println("Please don't forget to take the money!");
@@ -154,9 +154,8 @@ public class Main {
                             System.out.println("Please don't forget to bring your card!");
                             process = false;
                         }
-                        else if(moreKey == 1){
-                            process = true;
-                        }
+                        //else if(moreKey == 1){
+                        //}
                     }
                 }
             }

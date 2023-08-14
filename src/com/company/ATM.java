@@ -11,18 +11,7 @@ public class ATM {
     public ATM(){
 
     }
-    public ATM(String ATM, String surname, String name, String pinCode, String cardNumber, double balance) {
-        this.ATM = ATM;
-        this.surname = surname;
-        this.name = name;
-        this.pinCode = pinCode;
-        this.cardNumber = cardNumber;
-        this.balance = balance;
-    }
 
-    public String getATM() {
-        return ATM;
-    }
     public void setATM(String ATM) {
         this.ATM = ATM;
     }
@@ -44,9 +33,7 @@ public class ATM {
     public void setPinCode(String pinCode) {
         this.pinCode = pinCode;
     }
-    public String getCardNumber() {
-        return cardNumber;
-    }
+
     public void setCardNumber(String cardNumber) {
         this.cardNumber = cardNumber;
     }
@@ -61,8 +48,7 @@ public class ATM {
         return ATM + " " + surname + " " + name + " " + pinCode + " " + cardNumber + " " + balance;
     }
     public double commissionData(double amount){
-        double amountPercent = amount * 1 / 100;
-        return amountPercent;
+        return amount * 1 / 100;
     }
     public void receiptDataTake(double bal){
         System.out.println("===========================");
